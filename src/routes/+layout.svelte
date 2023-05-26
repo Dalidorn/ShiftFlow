@@ -21,6 +21,10 @@
         margin: 0;
 	}
 
+  :global(div) {
+    color: white;
+  }
+
 	:global(.red-outline) {
 		outline: solid red 3px;
 	}
