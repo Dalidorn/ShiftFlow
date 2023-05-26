@@ -88,28 +88,22 @@
 		}, 500);
 	}
 
-
-
-    function collectUserData() {
-
-    };
-
-
+	function collectUserData() {}
 
 	function submitBugReport(event) {
 		event.preventDefault();
 
 		let bugReport = {
 			type: 'Bug',
-			report: `---New ${document.querySelector("#severity").value} Bug Report!---
+			report: `---New ${document.querySelector('#severity').value} Bug Report!---
 Selected Elements: ${selectedElements[0].nodeName}
-Description: ${document.querySelector("#bugDesc").value}
+Description: ${document.querySelector('#bugDesc').value}
 Browser:
 `
 		};
 
-        reportData(bugReport);
-	};
+		reportData(bugReport);
+	}
 </script>
 
 <div class="bug-report" on:click={toggleModal}>Report a Bug</div>
