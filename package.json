@@ -24,5 +24,9 @@
 		"vite": "^4.3.0",
 		"vitest": "^0.25.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"html2canvas": "^1.4.1",
+		"image-compressor": "^2.0.3"
+	}
 }
