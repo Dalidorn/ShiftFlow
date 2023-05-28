@@ -38,8 +38,8 @@
 					(ele.start < start.start && ele.end > start.start) || // A before B
 					(ele.start > start.start && ele.end < start.end) || // A during B
 					(ele.start > start.start && ele.start < start.end) || // B before A
-					(ele.start < start.start && ele.end > start.end)
-				); // B during A
+					(ele.start < start.start && ele.end > start.end) // B during A
+				);
 			});
 
 			return !start
@@ -88,7 +88,7 @@
 <style>
 	svg {
 		width: 95%;
-		stroke-width: .1px;
+		stroke-width: 0.1px;
 	}
 	text {
 		font-size: 12%;
