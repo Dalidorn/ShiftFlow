@@ -1,27 +1,50 @@
 <script>
+	import { onMount } from 'svelte';
 	import Icon from './Icon.svelte';
 	import { twitter, discord, github, shiftflow } from './SVGData';
 
-	let isExpanded;
+	let isMobile = false;
 
-	function toggleExpand() {
-		isExpanded = !isExpanded;
-	}
+	const handleResize = () => {
+		isMobile = window.innerWidth <= 768; // Adjust the threshold as per your needs
+	};
+
+	onMount(() => {
+		handleResize(); // Check the screen size initially
+
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	});
 </script>
 
-<nav>
+{#if isMobile}
+	<nav class="mobile">
+		<!-- Mobile navigation bar content -->
+		<a href="/">Home</a>
+		<a href="/edit">Try Now</a>
+		<a href="/about">About</a>
+		<a href="/contact">Contact</a>
+		<a href="/feedback">Feedback</a>
+	</nav>
+{:else}
+	<nav class="desktop">
+		<a href="/">Home</a>
+		<a href="/edit">Try Now</a>
+		<a href="/about">About</a>
+		<a href="/contact">Contact</a>
+		<a href="/feedback">Feedback</a>
+	</nav>
+{/if}
+
+<!-- <nav>
 	<div class="logo">
 		<Icon d={shiftflow} fill="red" />
 		<p>Shift Flow</p>
 	</div>
 
-	{#if !isExpanded}
-		<div class="navbarMini" on:click={toggleExpand}>
-			<span>Menu</span>
-		</div>
-	{/if}
-
-	{#if isExpanded}
 		<div class="navbarExpanded">
 			<ul>
 				<li><a href="/">Home</a></li>
@@ -36,10 +59,34 @@
 				</li>
 			</ul>
 		</div>
-	{/if}
-</nav>
+</nav> -->
 
 <style>
+	.mobile {
+		/* Styles for mobile navigation bar */
+		display: flex;
+		justify-content: space-around;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background-color: gray;
+		width: 100vw;
+		/* ... */
+	}
+
+	.desktop {
+		/* Styles for desktop navigation bar */
+		display: flex;
+		justify-content: space-around;
+		position: fixed;
+		top: 0;
+		background-color: gray;
+		width: 100vw;
+		/* ... */
+	}
+
+	/* 
+
 	nav {
 		background-color: gray;
 	}
@@ -78,5 +125,5 @@
 		background-color: lightblue;
 		min-width: 85vw;
 		min-height: 85vh;
-	}
+	} */
 </style>

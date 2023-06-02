@@ -156,6 +156,13 @@ Browser:
 		z-index: 999;
 	}
 
+	@media (max-width: 768px) {
+    .bug-report {
+      top: 20px;
+      bottom: auto;
+    }
+  }
+
 	.bug-report:hover {
 		transform: scale(1.1);
 	}
