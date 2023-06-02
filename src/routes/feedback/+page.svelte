@@ -1,5 +1,5 @@
 <script>
-	import DiscordReporting from '../../lib/DiscordReporting';
+	import reportData from '../../lib/DiscordReporting';
 
 	let recommendApp = '';
 	let displayFeedbackPublicly = '';
@@ -33,11 +33,56 @@
 		}
 	}
 
-	// <DiscordReporting {reportData} />
+	function handleSubmit(event) {
+		event.preventDefault();
 
-	// function handleSubmit {
-	//     DiscordReporting.handleSubmit
-	// }
+		let name = document.querySelector('#name').value | 'Annon';
+		let email = document.querySelector('#email').value | 'Not Provided';
+
+		if (displayReview) {
+			let review = {
+				type: 'Review',
+				report: `Name: ${name}
+Email: ${email}
+`
+			};
+
+			reportData(review);
+		}
+
+		if (displayFeatureRequest) {
+			let request = {
+				type: 'FeatureRequest',
+				report: `Name: ${name}
+Email: ${email}
+`
+			};
+
+			reportData(request);
+		}
+
+		if (displayOpenEndedFeedback) {
+			let feedback = {
+				type: 'Feedback',
+				report: `Name: ${name}
+Email: ${email}
+`
+			};
+
+			reportData(feedback);
+		}
+
+		if (displayQuestions) {
+			let question = {
+				type: 'Question',
+				report: `Name: ${name}
+Email: ${email}
+`
+			};
+
+			reportData(question);
+		}
+	}
 </script>
 
 <form class="feedback-form">
@@ -45,12 +90,12 @@
 
 	<label>
 		Name:
-		<input type="text" placeholder="Your name" />
+		<input id="name" type="text" placeholder="Your name" />
 	</label>
 
 	<label>
 		Email:
-		<input type="email" placeholder="Your email" />
+		<input id="email" type="email" placeholder="Your email" />
 	</label>
 
 	<div class="checkbox-group">
@@ -109,23 +154,13 @@
 
 	<!-- Display Review -->
 	{#if displayReview}
-		<div>
-			<label>
-				Rating (1-5):
-				<div class="rating-container">
-					<span class="star">★</span>
-					<span class="star">★</span>
-					<span class="star">★</span>
-					<span class="star">★</span>
-					<span class="star">★</span>
-				</div>
-			</label>
-
-			<label>
-				Comment:
-				<textarea />
-			</label>
-		</div>
+		<fieldset class="rating">
+			<input type="radio" id="star1" name="rate" value="1" /><label for="star1" />
+			<input type="radio" id="star2" name="rate" value="2" /><label for="star2" />
+			<input type="radio" id="star3" name="rate" value="3" /><label for="star3" />
+			<input type="radio" id="star4" name="rate" value="4" /><label for="star4" />
+			<input type="radio" id="star5" name="rate" value="5" /><label for="star5" />
+		</fieldset>
 	{/if}
 
 	<!-- Display Feature Request -->

@@ -30,6 +30,8 @@
 		"d3-scale-chromatic": "^3.0.0",
 		"html2canvas": "^1.4.1",
 		"image-compressor": "^2.0.3",
-		"lz-string": "^1.5.0"
+		"lz-string": "^1.5.0",
+		"node": "^20.2.0",
+		"papaparse": "^5.4.1"
 	}
 }

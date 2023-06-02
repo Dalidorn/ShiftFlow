@@ -1,6 +1,7 @@
 <script>
 	import html2canvas from 'html2canvas';
 	import reportData from './DiscordReporting';
+	import collectUserData from "./InfoCollection";
 
 	let isOpen = false;
 	let isClosable = false;
@@ -88,14 +89,14 @@
 		}, 500);
 	}
 
-	function collectUserData() {}
-
 	function submitBugReport(event) {
 		event.preventDefault();
 
+		collectUserData();
+
 		let bugReport = {
 			type: 'Bug',
-			report: `---New ${document.querySelector('#severity').value} Bug Report!---
+			report: `---New [${document.querySelector('#severity').value}] Bug Report!---
 Selected Elements: ${selectedElements[0].nodeName}
 Description: ${document.querySelector('#bugDesc').value}
 Browser:

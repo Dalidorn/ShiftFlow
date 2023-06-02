@@ -1,130 +1,82 @@
 <script>
-	export let links = [
-		{ url: '/about', text: 'About' },
-		{ url: '/feedback', text: 'Feedback' },
-		{ url: '/contact', text: 'Contact' }
-	];
-	export let logoUrl = '';
+	import Icon from './Icon.svelte';
+	import { twitter, discord, github, shiftflow } from './SVGData';
+
+	let isExpanded;
+
+	function toggleExpand() {
+		isExpanded = !isExpanded;
+	}
 </script>
 
 <nav>
 	<div class="logo">
-		{#if logoUrl}
-			<img src={logoUrl} alt="Logo" />
-			<p>Shift Flow</p>
-		{/if}
+		<Icon d={shiftflow} fill="red" />
+		<p>Shift Flow</p>
 	</div>
-	<ul>
-		{#each links as link, index}
-			<li class="nav-item nav-item-{index}" style="z-index:{5 - index}">
-				<a href={link.url}>{link.text}</a>
-			</li>
-		{/each}
-		<li class="demoBlock">
-			<button>DEMO</button>
-			<button>GitHub</button>
-			<button>Discord</button>
-			<button>Twitter</button>
-		</li>
-	</ul>
+
+	{#if !isExpanded}
+		<div class="navbarMini" on:click={toggleExpand}>
+			<span>Menu</span>
+		</div>
+	{/if}
+
+	{#if isExpanded}
+		<div class="navbarExpanded">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/edit">Try Now</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/contact">Contact</a></li>
+				<li><a href="/feedback">Feedback</a></li>
+				<li class="communityLinks">
+					<Icon d={twitter} fill="red" />
+					<Icon d={discord} fill="red" />
+					<Icon d={github} fill="red" />
+				</li>
+			</ul>
+		</div>
+	{/if}
 </nav>
 
 <style>
-	/* Color Palette	 */
-	/* CSS HEX */
-	/* --rich-black: #080B12ff;
-  --bistre: #3B2C24ff;
-  --caf-noir: #533B2Bff;
-  --feldgrau: #536866ff;
-  --myrtle-green: #4B827Dff;
-  --caramel: #D98049ff;
-  --silver: #C5C6C8ff;
-  --eerie-black: #181D22ff; */
-
-	.nav-item::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(215deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.2));
-		z-index: 1;
-		pointer-events: none;
-	}
-
 	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-	}
-
-	.logo {
-		margin-right: 10px;
-	}
-
-	img {
-		height: 40px;
-		width: auto;
+		background-color: gray;
 	}
 
 	ul {
 		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		width: 70%;
 	}
 
-	li {
+	.navbarMini {
+		font-size: 1.2rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		position: relative;
-		padding: 15px 15px;
-		transform: skewX(-30deg);
+		position: absolute;
+		top: 20px;
+		right: 0;
+		background-color: lightblue;
+		min-width: 100px;
+		min-height: 45px;
+		border-radius: 10px 0 0 10px;
+		box-shadow: 3px 3px black;
 	}
 
-	.nav-item {
-		width: 100px;
-		box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+	.navbarMini:hover {
+		background-color: red;
 	}
 
-	.demoBlock {
+	.navbarExpanded {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin-left: -30px;
-		z-index: 1;
-		flex-grow: 1;
-		transform: skewX(0);
-		background-color: black;
+		flex-direction: column;
+		justify-content: center;
+		align-items: space-between;
+		position: absolute;
+		top: 20px;
+		right: 0;
+		background-color: lightblue;
+		min-width: 85vw;
+		min-height: 85vh;
 	}
-
-	.demoBlock button {
-		margin-left: 35px;
-	}
-
-	a {
-		text-decoration: none;
-		color: #fff;
-		transform: skewX(30deg);
-		display: block;
-	}
-
-	/* Add custom styles for each nav item */
-	.nav-item.nav-item-0 {
-		background-color: #533b2bff;
-	}
-
-	.nav-item.nav-item-1 {
-		background-color: #536866ff;
-	}
-
-	.nav-item.nav-item-2 {
-		background-color: #4b827dff;
-	}
-
-	/* Add more custom styles for other nav items as needed */
 </style>

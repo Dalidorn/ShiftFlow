@@ -14,7 +14,11 @@ export default function collectUserData() {
 		language: navigator.language,
 		online: navigator.onLine,
 		javaEnabled: navigator.javaEnabled(),
-		dataStores: navigator.storage
+		dataStores: navigator.storage,
+		viewport: {
+			width: window.innerWidth,
+			height: window.innerHeight
+		}
 	};
 
 	if (navigator.maxTouchPoints > 1) {
@@ -29,11 +33,12 @@ export default function collectUserData() {
 		userData.browser.inlinePDFSupport = false;
 	}
 
+	// Page URL
+	userData.pageUrl = window.location.href;
+
 	// Storage Details
 	userData.clipboard = navigator.clipboard.readText();
-	userData.localStorage = getLocalStorage();
-
-	// The 'localStorageData' object now contains the current data stored in local storage
+	userData.browserStorage = getBrowserStorage();
 
 	// Operating system details
 	userData.os = {
@@ -52,6 +57,9 @@ export default function collectUserData() {
 	if ('mediaSession' in navigator) {
 		userData.device.mediaState = navigator.mediaSession.metadata;
 	}
+
+	// Screen orientation
+	userData.screenOrientation = window.screen.orientation.type || '';
 
 	// Browser console logs
 	if (typeof console !== 'undefined') {
