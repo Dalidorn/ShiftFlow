@@ -25,7 +25,7 @@
 		<!-- Mobile navigation bar content -->
 		<a href="/">Home</a>
 		<a href="/edit">Try Now</a>
-		<a href="/about">About</a>
+		<a href="/about">News/Updates</a>
 		<a href="/contact">Contact</a>
 		<a href="/feedback">Feedback</a>
 	</nav>
@@ -33,7 +33,7 @@
 	<nav class="desktop">
 		<a href="/">Home</a>
 		<a href="/edit">Try Now</a>
-		<a href="/about">About</a>
+		<a href="/about">News/Updates</a>
 		<a href="/contact">Contact</a>
 		<a href="/feedback">Feedback</a>
 	</nav>
