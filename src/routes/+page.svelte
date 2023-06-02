@@ -4,20 +4,21 @@
 
 <div class="landingContainer">
 	<div class="landingContent">
-		<h2>Streamline your scheduling process!</h2>
+		<div class="landingInfo">
+			<h2>Streamline your scheduling process!</h2>
 
-		<p>
-			Whether you're a scheduling app novice or a seasoned pro, brace yourself for an immersive
-			experience with our mobile-friendly, state-of-the-art digital scheduling tool.
-		</p>
-
-		<div class="btnContainer">
-			<Button label="Get Started!" onClick="window.location.href = '/edit';" />
-			<Button label="Tutorial" onClick="window.location.href = '/edit:tutorial';" />
+			<p>
+				Whether you're a scheduling app novice or a seasoned pro, brace yourself for an immersive
+				experience with our mobile-friendly, state-of-the-art digital scheduling tool.
+			</p>
+			<div class="btnContainer">
+				<Button label="Get Started!" onClick="window.location.href = '/edit';" />
+				<Button label="Tutorial" onClick="window.location.href = '/edit:tutorial';" />
+			</div>
 		</div>
-	</div>
 
-	<div class="landingGraphic" />
+		<div class="landingGraphic" />
+	</div>
 </div>
 
 <div class="featuresBlock">
@@ -68,9 +69,10 @@
 
 	.landingContent {
 		display: flex;
-		flex-direction: column;
 		justify-content: space-around;
-		width: 20vw;
+		align-items: center;
+		width: 95vw;
+		height: 98vh;
 	}
 
 	.btnContainer {
@@ -78,12 +80,35 @@
 		justify-content: space-between;
 	}
 
+	.landingInfo {
+		width: 300px;
+	}
+
 	.landingContainer {
-		display: flex;
-		justify-content: space-around;
-		background-color: purple;
-		padding: 20px;
+		background: linear-gradient(
+			120deg,
+			rgb(210, 151, 250) 0%,
+			rgb(248, 138, 138) 25%,
+			rgb(250, 207, 147) 50%,
+			rgb(252, 250, 169) 75%,
+			rgb(140, 252, 144) 100%
+		);
+		background-size: 400% 400%;
 		z-index: -2;
+		height: 100vh;
+		animation: gradient 120s ease infinite;
+	}
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 0%;
+		}
+		50% {
+			background-position: 100% 100%;
+		}
+		100% {
+			background-position: 0% 0%;
+		}
 	}
 
 	.landingGraphic {

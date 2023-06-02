@@ -69,7 +69,6 @@
 		position: fixed;
 		bottom: 0;
 		left: 0;
-		background-color: gray;
 		width: 100vw;
 		/* ... */
 	}
@@ -80,7 +79,6 @@
 		justify-content: space-around;
 		position: fixed;
 		top: 0;
-		background-color: gray;
 		width: 100vw;
 		/* ... */
 	}
