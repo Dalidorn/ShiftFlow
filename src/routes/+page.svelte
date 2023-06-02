@@ -1,6 +1,5 @@
 <script>
-	import Button from "../lib/Button.svelte";
-
+	import Button from '../lib/Button.svelte';
 </script>
 
 <div class="landingContainer">
@@ -13,54 +12,58 @@
 		</p>
 
 		<div class="btnContainer">
-			<Button label="Get Started!" onClick="window.location.href = '/edit';"/>
-			<Button label="Tutorial" onClick="window.location.href = '/edit:tutorial';"/>
+			<Button label="Get Started!" onClick="window.location.href = '/edit';" />
+			<Button label="Tutorial" onClick="window.location.href = '/edit:tutorial';" />
 		</div>
 	</div>
 
 	<div class="landingGraphic" />
 </div>
 
-<div>
+<div class="featuresBlock">
 	<h2>Unlock your flow!</h2>
+
+	<h3>No Logins or Accounts Required</h3>
 	<p>
-		Experience the convenience of managing your schedules effortlessly, without the hassle of
-		logging in or creating accounts. Say goodbye to complex setups and hello to simplicity and
-		efficiency. Sharing schedules has never been easier. With our demo version, you can effortlessly
-		share schedules by simply encoding the data in a URL. Just send the link to anyone, and they can
-		instantly view the schedule without any additional steps. Need a physical copy? No problem! Our
-		app offers printable and downloadable versions for your convenience. We understand the
-		importance of seamless integration with existing scheduling tools. That's why our demo version
-		allows you to import schedules from CSV and XLS files, making setup a breeze. Say goodbye to
-		manual data entry and save precious time. Experience the freedom of mobile scheduling. Our focus
-		on mobile UI ensures that you can maintain and edit your schedules from anywhere, anytime. Stay
-		connected and in control, even when you're on the go. Discover the power of AI in our demo
-		version. Our cutting-edge features include voice transcription of shifts. Simply speak out what
-		you'd like to schedule, and our AI-powered system will create a shift with those details.
-		Embrace the future of scheduling with effortless voice commands.
+		Dive right into scheduling without the need for time-consuming registrations or logins. It's
+		quick, easy, and hassle-free!
+	</p>
+
+	<h3>Effortless Data Import</h3>
+	<p>
+		We know that transitioning from other scheduling tools can be a daunting task. So say goodbye to
+		manual data entry! We've included CSV and XLS import functionality and created automatic imports
+		from some of the largest scheduling tools out there. Migrating your existing schedules to
+		ShiftFlow is a breeze, saving you valuable time and effort.
+	</p>
+
+	<h3>Mobile-Optimized UI</h3>
+	<p>
+		Experience the freedom of mobile scheduling. Our mobile-optimized user interface and intuitive
+		tools provide easy management of your schedules, no matter where you are. You can effortlessly
+		maintain and edit your schedules from anywhere, anytime. Stay connected and in control, even
+		when you're on the go.
+	</p>
+
+	<h3>AI-Powered Features</h3>
+	<p>
+		ShiftFlow incorporates artificial intelligence technology to enhance your scheduling experience.
+		Try out our voice transcription feature, where you can speak your scheduling details, and the
+		app will automatically create shifts based on your instructions. Even more AI tools to come!
+	</p>
+
+	<h3>Seamless Sharing</h3>
+	<p>
+		Sharing schedules has never been easier. Our demo version allows you to generate a unique URL
+		for your schedule, which you can effortlessly share with anyone. Simply send the link, and they
+		can instantly view your schedule.
 	</p>
 </div>
 
-<div>
-	<h2>Ready to revolutionize your scheduling process?</h2>
-	<h3>Interactive Walkthrough</h3>
-	<p>First time? Let our tutorial walk you through the steps!</p>
-</div>
-
-<div class="highlightSquare"></div>
-
 <style>
-
-	.highlightSquare {
-		background-color: red;
-		width: 60%;
-		height: 70%;
-		overflow: hidden;
-		position: absolute;
-		right: 0;
-		top: 40%;
-		rotate: 130deg;
-		z-index: -1;
+	.featuresBlock {
+		text-align: center;
+		width: 75vw;
 	}
 
 	.landingContent {
@@ -89,5 +92,4 @@
 		height: 32vw;
 		border-radius: 25px;
 	}
-
 </style>
