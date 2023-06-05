@@ -1,5 +1,5 @@
 <script>
-	import reportData from '../../lib/DiscordReporting';
+	import reportData from './DiscordReporting';
 
 	let recommendApp = '';
 	let displayFeedbackPublicly = '';
@@ -85,7 +85,7 @@ Email: ${email}
 	}
 </script>
 
-<form class="feedback-form">
+<form id="feedback" class="feedback-form">
 	<h2>Feedback Form</h2>
 
 	<label>

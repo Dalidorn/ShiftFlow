@@ -1,4 +1,4 @@
-<h2>Updates & News</h2>
+<h2 id="about">Updates & News</h2>
 
 <p>Welcome to the Updates & News section of ShiftFlow! Here, we keep you in the loop with the latest happenings, feature releases, and insights into our team and development process.</p>
 

@@ -1,8 +1,11 @@
 <script>
+	import About from '../lib/About.svelte';
+	import Contact from '../lib/Contact.svelte';
+	import Feedback from '../lib/Feedback.svelte';
 	import Button from '../lib/Button.svelte';
 </script>
 
-<div class="landingContainer">
+<div id="home" class="landingContainer">
 	<div class="landingContent">
 		<div class="landingInfo">
 			<h2>Streamline your scheduling process!</h2>
@@ -61,6 +64,10 @@
 	</p>
 </div>
 
+<About />
+<Contact />
+<Feedback />
+
 <style>
 	.featuresBlock {
 		text-align: center;
@@ -69,19 +76,29 @@
 
 	.landingContent {
 		display: flex;
-		justify-content: space-around;
+		flex-direction: column-reverse;
+		justify-content: center;
 		align-items: center;
 		width: 95vw;
 		height: 98vh;
 	}
 
+	@media (min-width: 1200px) {
+		.landingContent {
+			flex-direction: row;
+		}
+	}
+
 	.btnContainer {
+		margin-top: 50px;
 		display: flex;
 		justify-content: space-between;
 	}
 
 	.landingInfo {
-		width: 300px;
+		text-align: center;
+		width: 50vw;
+		margin: 50px;
 	}
 
 	.landingContainer {
@@ -113,8 +130,8 @@
 
 	.landingGraphic {
 		background-color: red;
-		width: 18vw;
-		height: 32vw;
+		width: 35vw;
+		height: 50vw;
 		border-radius: 25px;
 	}
 </style>

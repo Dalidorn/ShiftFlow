@@ -18,6 +18,29 @@
 			window.removeEventListener('resize', handleResize);
 		};
 	});
+
+	onMount(() => {
+  // Smooth scrolling when clicking on anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const href = this.getAttribute('href');
+      if (window.location.pathname === '/' && href !== '/') {
+        // Scroll to the section directly on the home page
+        const section = document.querySelector(href);
+        if (section) {
+          section.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        // Redirect to the desired section on other pages
+        window.location.href = `/${href}`;
+      }
+    });
+  });
+});
 </script>
 
 {#if isMobile}
@@ -25,17 +48,17 @@
 		<!-- Mobile navigation bar content -->
 		<a href="/">Home</a>
 		<a href="/edit">Try Now</a>
-		<a href="/about">News/Updates</a>
-		<a href="/contact">Contact</a>
-		<a href="/feedback">Feedback</a>
+		<a href="#about">News/Updates</a>
+		<a href="#contact">Contact</a>
+		<a href="#feedback">Feedback</a>
 	</nav>
 {:else}
 	<nav class="desktop">
 		<a href="/">Home</a>
 		<a href="/edit">Try Now</a>
-		<a href="/about">News/Updates</a>
-		<a href="/contact">Contact</a>
-		<a href="/feedback">Feedback</a>
+		<a href="#about">News/Updates</a>
+		<a href="#contact">Contact</a>
+		<a href="#feedback">Feedback</a>
 	</nav>
 {/if}
 
@@ -44,22 +67,7 @@
 		<Icon d={shiftflow} fill="red" />
 		<p>Shift Flow</p>
 	</div>
-
-		<div class="navbarExpanded">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/edit">Try Now</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/contact">Contact</a></li>
-				<li><a href="/feedback">Feedback</a></li>
-				<li class="communityLinks">
-					<Icon d={twitter} fill="red" />
-					<Icon d={discord} fill="red" />
-					<Icon d={github} fill="red" />
-				</li>
-			</ul>
-		</div>
-</nav> -->
+-->
 
 <style>
 	.mobile {

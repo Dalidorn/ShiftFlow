@@ -1,4 +1,4 @@
-<h2>Connect with Us</h2>
+<h2 id="contact">Connect with Us</h2>
 
 <div class="socialContainer">
 	<div class="socialBlock">
