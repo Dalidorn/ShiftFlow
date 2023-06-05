@@ -1,7 +1,7 @@
 <script>
 	let showModal = false;
 	export let roles;
-    export let employees;
+	export let employees;
 	export let shiftData;
 	let shiftForm = {};
 
@@ -9,7 +9,7 @@
 		// Handle form submission logic to create a new shift
 		// You can access the shift data using the 'shiftForm' object
 		// e.g., shiftForm.name, shiftForm.role, shiftForm.start, shiftForm.end
-        newShift = { ...shiftForm };
+		newShift = { _id: shiftData.length + 1, ...shiftForm };
 
 		// Add newShift to existing shiftData
 		shiftData.push(newShift);
@@ -36,13 +36,12 @@
 			<div class="modal-content">
 				<h2>New Shift</h2>
 				<form on:submit|preventDefault={handleSubmit}>
-
 					<label for="name">Name:</label>
 					<select id="name" bind:value={shiftForm.name}>
-                        {#each employees as employee}
-                            <option value={employee}>{employee}</option>
-                        {/each}
-                    </select>
+						{#each employees as employee}
+							<option value={employee}>{employee}</option>
+						{/each}
+					</select>
 
 					<label for="role">Role:</label>
 					<select id="role" bind:value={shiftForm.role}>

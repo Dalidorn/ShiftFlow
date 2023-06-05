@@ -17,8 +17,6 @@
 	</div>
 </div>
 
-
-
 <h2>Bug Reports and Feedback</h2>
 <p>
 	We highly value your feedback and strive to make [Your App Name] even better. If you encounter any
@@ -30,36 +28,34 @@
 <p>On more official business? Reach out to us below and we'll be in touch!</p>
 
 <style>
+	.socialContainer {
+		display: flex;
+		flex-wrap: wrap;
+		width: 90vw;
+		background-color: gray;
+		border-radius: 25px;
+		padding: 25px;
+		justify-content: center;
+		align-items: center;
+	}
 
-    .socialContainer {
-        display: flex;
-        flex-wrap: wrap;
-        width: 90vw;
-        background-color: gray;
-        border-radius: 25px;
-        padding: 25px;
-        justify-content: center;
-        align-items: center;
-    }
+	.socialBlock {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 35vw;
+		margin: 10px;
+	}
 
-    .socialBlock {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 35vw;
-        margin: 10px;
-    }
-
-    .socialLink {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        background-color: rgb(255, 176, 111);
-        margin: 10px;
-        border-radius: 100%;
-        aspect-ratio: 1/1;
-        width: 30vw;
-    }
-
+	.socialLink {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		background-color: rgb(255, 176, 111);
+		margin: 10px;
+		border-radius: 100%;
+		aspect-ratio: 1/1;
+		width: 30vw;
+	}
 </style>

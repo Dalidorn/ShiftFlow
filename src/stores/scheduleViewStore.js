@@ -1,3 +1,3 @@
 export const scheduleViewStore = writable({
-  shifts: [],
+	shifts: []
 });

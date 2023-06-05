@@ -44,13 +44,7 @@
 	{/if}
 </ul>
 
-
 <GettingStartedModal />
-
-
-
-
-
 <NewShiftModal shiftData={shifts} {employees} {roles} />
 <NewRoleModal {roles} />
 <NewEmployeeModal {employees} {roles} />

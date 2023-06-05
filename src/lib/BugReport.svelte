@@ -1,7 +1,7 @@
 <script>
 	import html2canvas from 'html2canvas';
 	import reportData from './DiscordReporting';
-	import collectUserData from "./InfoCollection";
+	import collectUserData from './InfoCollection';
 
 	let isOpen = false;
 	let isClosable = false;
@@ -157,11 +157,11 @@ Browser:
 	}
 
 	@media (max-width: 768px) {
-    .bug-report {
-      top: 20px;
-      bottom: auto;
-    }
-  }
+		.bug-report {
+			top: 20px;
+			bottom: auto;
+		}
+	}
 
 	.bug-report:hover {
 		transform: scale(1.1);

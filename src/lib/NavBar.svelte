@@ -20,27 +20,27 @@
 	});
 
 	onMount(() => {
-  // Smooth scrolling when clicking on anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
+		// Smooth scrolling when clicking on anchor links
+		document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
 
-      const href = this.getAttribute('href');
-      if (window.location.pathname === '/' && href !== '/') {
-        // Scroll to the section directly on the home page
-        const section = document.querySelector(href);
-        if (section) {
-          section.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      } else {
-        // Redirect to the desired section on other pages
-        window.location.href = `/${href}`;
-      }
-    });
-  });
-});
+				const href = this.getAttribute('href');
+				if (window.location.pathname === '/' && href !== '/') {
+					// Scroll to the section directly on the home page
+					const section = document.querySelector(href);
+					if (section) {
+						section.scrollIntoView({
+							behavior: 'smooth'
+						});
+					}
+				} else {
+					// Redirect to the desired section on other pages
+					window.location.href = `/${href}`;
+				}
+			});
+		});
+	});
 </script>
 
 {#if isMobile}

@@ -3,16 +3,18 @@
 	export let onClick;
 
 	function handleClick() {
-        eval(onClick);
-    };
+		eval(onClick);
+	}
 </script>
 
-<button id="btn" class="btnComponent" on:click={handleClick}><span class="btnLabel">{label}</span></button>
+<button id="btn" class="btnComponent" on:click={handleClick}
+	><span class="btnLabel">{label}</span></button
+>
 
 <style>
 	.btnLabel {
 		padding: 10px 0 10px 0;
-        margin: 0;
+		margin: 0;
 	}
 
 	.btnComponent {

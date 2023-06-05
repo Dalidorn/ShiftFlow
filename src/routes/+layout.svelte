@@ -13,5 +13,5 @@
 </div>
 
 <style>
-	@import "../global.css";
+	@import '../global.css';
 </style>
