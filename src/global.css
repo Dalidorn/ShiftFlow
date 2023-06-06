@@ -4,12 +4,12 @@ html {
 	padding: 0;
 	margin: 0;
 	font-size: 16px;
-	background-color: gray;
+	background-color: rgb(243, 243, 243);
 	font-family: Phantomsans, sans-serif;
 }
 
 div {
-	color: white;
+	color: rgb(0, 0, 0);
 }
 
 .red-outline {

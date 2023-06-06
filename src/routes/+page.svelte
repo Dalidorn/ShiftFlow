@@ -3,6 +3,35 @@
 	import Contact from '../lib/Contact.svelte';
 	import Feedback from '../lib/Feedback.svelte';
 	import Button from '../lib/Button.svelte';
+	import Carousel from '../lib/Carousel.svelte';
+
+	let featureCards = [
+		{
+			title: 'No Logins or Accounts Required',
+			info: "Dive right into scheduling without the need for time-consuming registrations or logins. It's quick, easy, and hassle-free!",
+			position: ''
+		},
+		{
+			title: 'Effortless Data Import',
+			info: "We know that transitioning from other scheduling tools can be a daunting task. So say goodbye to manual data entry! We've included CSV and XLS import functionality and created automatic imports from some of the largest scheduling tools out there. Migrating your existing schedules to ShiftFlow is a breeze, saving you valuable time and effort.",
+			position: ''
+		},
+		{
+			title: 'Mobile-Optimized UI',
+			info: "Experience the freedom of mobile scheduling. Our mobile-optimized user interface and intuitive tools provide easy management of your schedules, no matter where you are. You can effortlessly maintain and edit your schedules from anywhere, anytime. Stay connected and in control, even when you're on the go.",
+			position: ''
+		},
+		{
+			title: 'AI-Powered Features',
+			info: 'ShiftFlow incorporates artificial intelligence technology to enhance your scheduling experience. Try out our voice transcription feature, where you can speak your scheduling details, and the app will automatically create shifts based on your instructions. Even more AI tools to come!',
+			position: ''
+		},
+		{
+			title: 'Seamless Sharing',
+			info: 'Sharing schedules has never been easier. Our demo version allows you to generate a unique URL for your schedule, which you can effortlessly share with anyone. Simply send the link, and they can instantly view your schedule.',
+			position: ''
+		}
+	];
 </script>
 
 <div id="home" class="landingContainer">
@@ -24,46 +53,7 @@
 	</div>
 </div>
 
-<div class="featuresBlock">
-	<h2>Unlock your flow!</h2>
-
-	<h3>No Logins or Accounts Required</h3>
-	<p>
-		Dive right into scheduling without the need for time-consuming registrations or logins. It's
-		quick, easy, and hassle-free!
-	</p>
-
-	<h3>Effortless Data Import</h3>
-	<p>
-		We know that transitioning from other scheduling tools can be a daunting task. So say goodbye to
-		manual data entry! We've included CSV and XLS import functionality and created automatic imports
-		from some of the largest scheduling tools out there. Migrating your existing schedules to
-		ShiftFlow is a breeze, saving you valuable time and effort.
-	</p>
-
-	<h3>Mobile-Optimized UI</h3>
-	<p>
-		Experience the freedom of mobile scheduling. Our mobile-optimized user interface and intuitive
-		tools provide easy management of your schedules, no matter where you are. You can effortlessly
-		maintain and edit your schedules from anywhere, anytime. Stay connected and in control, even
-		when you're on the go.
-	</p>
-
-	<h3>AI-Powered Features</h3>
-	<p>
-		ShiftFlow incorporates artificial intelligence technology to enhance your scheduling experience.
-		Try out our voice transcription feature, where you can speak your scheduling details, and the
-		app will automatically create shifts based on your instructions. Even more AI tools to come!
-	</p>
-
-	<h3>Seamless Sharing</h3>
-	<p>
-		Sharing schedules has never been easier. Our demo version allows you to generate a unique URL
-		for your schedule, which you can effortlessly share with anyone. Simply send the link, and they
-		can instantly view your schedule.
-	</p>
-</div>
-
+<Carousel {featureCards} />
 <About />
 <Contact />
 <Feedback />
@@ -71,7 +61,66 @@
 <style>
 	.featuresBlock {
 		text-align: center;
-		width: 75vw;
+		padding: 50px 80px;
+	}
+
+	.featureCarousel {
+		display: flex;
+	}
+
+	.featureCard {
+		margin: 0 15px 60px;
+		width: 320px;
+		height: 400px;
+		display: flex;
+		align-items: flex-end;
+		background-color: blue;
+		border-radius: 16px;
+		overflow: hidden;
+		position: relative;
+		transition: all 0.4s ease-in-out;
+		cursor: pointer;
+	}
+
+	.featureCard .active {
+		width: 500px;
+		box-shadow: 12px 40px 40px rgb(0, 0, 0, 0.25);
+	}
+
+	.featureCard:after {
+		content: '';
+		display: block;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		left: 0;
+		top: 0;
+		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+	}
+
+	.featureDesc {
+		padding: 0 24px 12px;
+		color: white;
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+		transform: translateY(calc(100% - 54px));
+		transition: all 0.4s ease-in-out;
+	}
+
+	.featureCard.active .featureDesc {
+		transform: none;
+	}
+
+	.featureDesc p {
+		opacity: 0;
+		transform: translateY(32px);
+		transition: all 0.4s ease-in-out 0.2s;
+	}
+
+	.featureCard.active .featureDesc p {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
 	.landingContent {
