@@ -53,76 +53,12 @@
 	</div>
 </div>
 
-<Carousel {featureCards} />
+<Carousel {featureCards} delay="4750" />
 <About />
 <Contact />
 <Feedback />
 
 <style>
-	.featuresBlock {
-		text-align: center;
-		padding: 50px 80px;
-	}
-
-	.featureCarousel {
-		display: flex;
-	}
-
-	.featureCard {
-		margin: 0 15px 60px;
-		width: 320px;
-		height: 400px;
-		display: flex;
-		align-items: flex-end;
-		background-color: blue;
-		border-radius: 16px;
-		overflow: hidden;
-		position: relative;
-		transition: all 0.4s ease-in-out;
-		cursor: pointer;
-	}
-
-	.featureCard .active {
-		width: 500px;
-		box-shadow: 12px 40px 40px rgb(0, 0, 0, 0.25);
-	}
-
-	.featureCard:after {
-		content: '';
-		display: block;
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		left: 0;
-		top: 0;
-		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-	}
-
-	.featureDesc {
-		padding: 0 24px 12px;
-		color: white;
-		position: relative;
-		z-index: 1;
-		overflow: hidden;
-		transform: translateY(calc(100% - 54px));
-		transition: all 0.4s ease-in-out;
-	}
-
-	.featureCard.active .featureDesc {
-		transform: none;
-	}
-
-	.featureDesc p {
-		opacity: 0;
-		transform: translateY(32px);
-		transition: all 0.4s ease-in-out 0.2s;
-	}
-
-	.featureCard.active .featureDesc p {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
 	.landingContent {
 		display: flex;
 		flex-direction: column-reverse;
@@ -180,7 +116,7 @@
 	.landingGraphic {
 		background-color: red;
 		width: 35vw;
-		height: 50vw;
+		height: 50vh;
 		border-radius: 25px;
 	}
 </style>

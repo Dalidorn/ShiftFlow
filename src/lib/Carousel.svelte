@@ -1,7 +1,36 @@
 <script>
-	let activeCardIndex = 0;
+	import { onMount, onDestroy } from 'svelte';
 
+	let activeCardIndex = 0;
+	let timeoutId;
+	export let delay;
 	export let featureCards;
+
+	function animationCounter() {
+		if (activeCardIndex < featureCards.length - 1) {
+			activeCardIndex++;
+		} else {
+			activeCardIndex = 0;
+		}
+
+		timeoutId = setTimeout(animationCounter, delay);
+	}
+
+	onMount(() => {
+		timeoutId = setTimeout(animationCounter, delay);
+	});
+
+	onDestroy(() => {
+		clearTimeout(timeoutId);
+	});
+
+	function pauseTimer() {
+		clearTimeout(timeoutId);
+	}
+
+	function resumeTimer() {
+		timeoutId = setTimeout(animationCounter, delay);
+	}
 
 	$: {
 		let visibleCards = [];
@@ -36,6 +65,8 @@
 					? 'position-' + card.position
 					: ''} {activeCardIndex === i ? 'active' : ''}"
 				on:click={() => (activeCardIndex = i)}
+				on:mouseenter={pauseTimer}
+				on:mouseleave={resumeTimer}
 			>
 				<div class="featureDesc">
 					<h3>{card.title}</h3>
@@ -45,8 +76,8 @@
 		{/each}
 	</section>
 
-	<section class="indexBtns">
-		{#each featureCards as card, i}
+	<section class="indexBtns" on:mouseenter={pauseTimer} on:mouseleave={resumeTimer}>
+		{#each featureCards as _, i}
 			<div
 				class="indexBtn"
 				class:active={activeCardIndex === i}
