@@ -4,12 +4,17 @@
 	import { schemeCategory10 } from 'd3-scale-chromatic';
 
 	export let scheduleData;
+
 	const schedule = categorize(scheduleData);
+	const numOfCategories = schedule.reduce(
+		(acc, cur) => (acc.includes(cur.category) ? acc : [...acc, cur.category]),
+		[]
+	).length;
 	const timeRange = schedule.flatMap((shift) => [dayjs(shift.start), dayjs(shift.end)]);
 	const timeDim = scaleTime([Math.min(...timeRange), Math.max(...timeRange)], [0, 100]).nice();
 	const barDim = scaleBand(
 		schedule.map((d) => d.category),
-		[13, 13 + 30] // 10 for each category
+		[13, 13 + 10 * numOfCategories] // 10 for each category
 	).paddingInner(0.1);
 	const nameDim = scaleOrdinal(
 		schedule.map((d) => d.name),
@@ -62,7 +67,7 @@
 	}
 </script>
 
-<svg viewBox="0 0 43 100">
+<svg viewBox="0 0 {13 + 10 * numOfCategories} 100">
 	<line y1="0" x1="12" y2="100" x2="12" stroke="black" />
 	{#each timeDim.ticks() as tick}
 		<path id={timeDim(tick)} d="M 0,{timeDim(tick)} 12,{timeDim(tick)}" stroke="black" />
