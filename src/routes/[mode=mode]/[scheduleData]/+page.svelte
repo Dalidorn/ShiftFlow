@@ -1,4 +1,5 @@
 <script>
+	import dayjs from 'dayjs';
 	import lz from 'lz-string';
 	import { scaleTime, scaleBand, scaleOrdinal } from 'd3-scale';
 	import { schemeCategory10 } from 'd3-scale-chromatic';
@@ -6,10 +7,7 @@
 	export let data;
 
 	const schedule = categorize(JSON.parse(lz.decompressFromEncodedURIComponent(data.scheduleData)));
-	const timeRange = schedule.flatMap((shift) => [
-		new Date(shift.start).valueOf(),
-		new Date(shift.end).valueOf()
-	]);
+	const timeRange = schedule.flatMap((shift) => [dayjs(shift.start), dayjs(shift.end)]);
 	const timeDim = scaleTime([Math.min(...timeRange), Math.max(...timeRange)], [0, 100]).nice();
 	const barDim = scaleBand(
 		schedule.map((d) => d.category),
@@ -69,7 +67,11 @@
 <content>
 	<div class="list">
 		{#each schedule as { start, end, role, name }}
-			<p>{name} as {role} is starting at {start} and ending at {end}.</p>
+			<p>
+				{name} as {role} is starting at {dayjs(start).format('hh:mm a')} and ending at {dayjs(
+					end
+				).format('hh:mm a')}.
+			</p>
 		{/each}
 	</div>
 
@@ -77,16 +79,16 @@
 		<svg viewBox="0 0 43 100">
 			<line y1="0" x1="12" y2="100" x2="12" stroke="black" />
 			{#each timeDim.ticks() as tick}
-				<path id={timeDim(tick)} d="M 0,{timeDim(tick)} 12,{timeDim(tick) + 2}" stroke="black" />
+				<path id={timeDim(tick)} d="M 0,{timeDim(tick)} 12,{timeDim(tick)}" stroke="black" />
 				<text>
-					<textPath href="#{timeDim(tick)}">{tick}</textPath>
+					<textPath href="#{timeDim(tick)}">{dayjs(tick).format('DD ddd')}</textPath>
 				</text>
 			{/each}
 			{#each schedule as { start, end, category, name }}
 				<rect
-					y={timeDim(new Date(start))}
+					y={timeDim(dayjs(start))}
 					x={barDim(category)}
-					height={timeDim(new Date(end)) - timeDim(new Date(start))}
+					height={timeDim(dayjs(end)) - timeDim(dayjs(start))}
 					width={barDim.bandwidth()}
 					fill={nameDim(name)}
 				/>
