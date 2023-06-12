@@ -66,43 +66,48 @@
 	}
 </script>
 
-<!-- <svg viewBox="-5 -5 110 40">
-	<line x1="0" y1="12" x2="100" y2="12" stroke="black" />
-	{#each timeDim.ticks() as tick}
-		<path id={timeDim(tick)} d="M {timeDim(tick)},12 {timeDim(tick) + 2},0" stroke="black" />
-		<text>
-			<textPath href="#{timeDim(tick)}" startOffset="5%">{tick}</textPath>
-		</text>
-	{/each}
-	{#each schedule as { start, end, category, name }}
-		<rect
-			x={timeDim(new Date(start))}
-			y={barDim(category)}
-			width={timeDim(new Date(end)) - timeDim(new Date(start))}
-			height={barDim.bandwidth()}
-			fill={nameDim(name)}
-		/>
-	{/each}
-</svg> -->
-
 <content>
-	<div class="list">List goes here</div>
+	<div class="list">
+		{#each schedule as { start, end, role, name }}
+			<p>{name} as {role} is starting at {start} and ending at {end}.</p>
+		{/each}
+	</div>
 
-	<div class="graph">Graph goes here</div>
+	<div class="graph">
+		<svg viewBox="-5 -5 110 40">
+			<line x1="0" y1="12" x2="100" y2="12" stroke="black" />
+			{#each timeDim.ticks() as tick}
+				<path id={timeDim(tick)} d="M {timeDim(tick)},12 {timeDim(tick) + 2},0" stroke="black" />
+				<text>
+					<textPath href="#{timeDim(tick)}" startOffset="5%">{tick}</textPath>
+				</text>
+			{/each}
+			{#each schedule as { start, end, category, name }}
+				<rect
+					x={timeDim(new Date(start))}
+					y={barDim(category)}
+					width={timeDim(new Date(end)) - timeDim(new Date(start))}
+					height={barDim.bandwidth()}
+					fill={nameDim(name)}
+				/>
+			{/each}
+		</svg>
+	</div>
 </content>
 
 <style>
 	content {
 		display: flex;
+		gap: 5px;
 		height: 92vh;
 	}
 	.list {
-		background-color: green;
+		background-color: darkgray;
 		height: 100%;
 		width: 100%;
 	}
 	.graph {
-		background-color: red;
+		background-color: darkgray;
 		height: 100%;
 		width: 100%;
 	}
