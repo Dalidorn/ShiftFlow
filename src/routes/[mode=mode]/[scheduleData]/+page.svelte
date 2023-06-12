@@ -66,7 +66,7 @@
 	}
 </script>
 
-<svg viewBox="-5 -5 110 40">
+<!-- <svg viewBox="-5 -5 110 40">
 	<line x1="0" y1="12" x2="100" y2="12" stroke="black" />
 	{#each timeDim.ticks() as tick}
 		<path id={timeDim(tick)} d="M {timeDim(tick)},12 {timeDim(tick) + 2},0" stroke="black" />
@@ -83,9 +83,29 @@
 			fill={nameDim(name)}
 		/>
 	{/each}
-</svg>
+</svg> -->
+
+<content>
+	<div class="list">List goes here</div>
+
+	<div class="graph">Graph goes here</div>
+</content>
 
 <style>
+	content {
+		display: flex;
+		height: 92vh;
+	}
+	.list {
+		background-color: green;
+		height: 100%;
+		width: 100%;
+	}
+	.graph {
+		background-color: red;
+		height: 100%;
+		width: 100%;
+	}
 	svg {
 		width: 95%;
 		stroke-width: 0.1px;
