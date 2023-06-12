@@ -1,9 +1,7 @@
 <script>
-	import dayjs from 'dayjs';
 	import lz from 'lz-string';
-	/* import { scaleTime, scaleBand, scaleOrdinal } from 'd3-scale';
-	import { schemeCategory10 } from 'd3-scale-chromatic'; */
 	import Graph from '$lib/Graph.svelte';
+	import List from '$lib/List.svelte';
 
 	export let data;
 
@@ -12,13 +10,7 @@
 
 <content>
 	<div class="list">
-		{#each schedule as { start, end, role, name }}
-			<p>
-				{name} as {role} is starting at {dayjs(start).format('hh:mm a')} and ending at {dayjs(
-					end
-				).format('hh:mm a')}.
-			</p>
-		{/each}
+		<List scheduleData={schedule} />
 	</div>
 
 	<div class="graph">
