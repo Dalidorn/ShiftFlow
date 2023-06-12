@@ -13,7 +13,7 @@
 	const timeDim = scaleTime([Math.min(...timeRange), Math.max(...timeRange)], [0, 100]).nice();
 	const barDim = scaleBand(
 		schedule.map((d) => d.category),
-		[13, 30]
+		[13, 13 + 30] // 10 for each category
 	).paddingInner(0.1);
 	const nameDim = scaleOrdinal(
 		schedule.map((d) => d.name),
@@ -74,20 +74,20 @@
 	</div>
 
 	<div class="graph">
-		<svg viewBox="-5 -5 110 40">
-			<line x1="0" y1="12" x2="100" y2="12" stroke="black" />
+		<svg viewBox="0 0 43 100">
+			<line y1="0" x1="12" y2="100" x2="12" stroke="black" />
 			{#each timeDim.ticks() as tick}
-				<path id={timeDim(tick)} d="M {timeDim(tick)},12 {timeDim(tick) + 2},0" stroke="black" />
+				<path id={timeDim(tick)} d="M 0,{timeDim(tick)} 12,{timeDim(tick) + 2}" stroke="black" />
 				<text>
-					<textPath href="#{timeDim(tick)}" startOffset="5%">{tick}</textPath>
+					<textPath href="#{timeDim(tick)}">{tick}</textPath>
 				</text>
 			{/each}
 			{#each schedule as { start, end, category, name }}
 				<rect
-					x={timeDim(new Date(start))}
-					y={barDim(category)}
-					width={timeDim(new Date(end)) - timeDim(new Date(start))}
-					height={barDim.bandwidth()}
+					y={timeDim(new Date(start))}
+					x={barDim(category)}
+					height={timeDim(new Date(end)) - timeDim(new Date(start))}
+					width={barDim.bandwidth()}
 					fill={nameDim(name)}
 				/>
 			{/each}
@@ -112,7 +112,7 @@
 		width: 100%;
 	}
 	svg {
-		width: 95%;
+		height: 100%;
 		stroke-width: 0.1px;
 	}
 	text {
