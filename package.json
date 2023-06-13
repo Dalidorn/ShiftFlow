@@ -26,7 +26,11 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"d3-scale": "^4.0.2",
+		"d3-scale-chromatic": "^3.0.0",
+		"dayjs": "^1.11.8",
 		"html2canvas": "^1.4.1",
-		"image-compressor": "^2.0.3"
+		"image-compressor": "^2.0.3",
+		"lz-string": "^1.5.0"
 	}
 }
