@@ -19,7 +19,7 @@
 
 <h2>Bug Reports and Feedback</h2>
 <p>
-	We highly value your feedback and strive to make [Your App Name] even better. If you encounter any
+	We highly value your feedback and strive to make ShiftFlow even better. If you encounter any
 	issues or have suggestions for improvement, please let us know! You can report bugs or provide
 	feedback through our dedicated Bug Report and Feedback forms on our website.
 </p>
@@ -56,6 +56,6 @@
 		margin: 10px;
 		border-radius: 100%;
 		aspect-ratio: 1/1;
-		width: 30vw;
+		width: 10vw;
 	}
 </style>

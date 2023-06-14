@@ -92,14 +92,14 @@
 	function submitBugReport(event) {
 		event.preventDefault();
 
-		collectUserData();
+		console.log(collectUserData());
 
 		let bugReport = {
 			type: 'Bug',
-			report: `---New [${document.querySelector('#severity').value}] Bug Report!---
+			report: `
+---New [${document.querySelector('#severity').value}] Bug Report!---
 Selected Elements: ${selectedElements[0].nodeName}
 Description: ${document.querySelector('#bugDesc').value}
-Browser:
 `
 		};
 

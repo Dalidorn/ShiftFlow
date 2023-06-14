@@ -211,7 +211,7 @@ Email: ${email}
 		</div>
 	{/if}
 
-	<button type="submit">Submit</button>
+	<button on:click={handleSubmit} type="submit">Submit</button>
 </form>
 
 <style>

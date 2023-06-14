@@ -13,7 +13,7 @@ export default function collectUserData() {
 		cookiesEnabled: navigator.cookieEnabled,
 		language: navigator.language,
 		online: navigator.onLine,
-		javaEnabled: navigator.javaEnabled(),
+		javaEnabled: !!navigator && !!navigator.javascript,
 		dataStores: navigator.storage,
 		viewport: {
 			width: window.innerWidth,
@@ -37,7 +37,6 @@ export default function collectUserData() {
 	userData.pageUrl = window.location.href;
 
 	// Storage Details
-	userData.clipboard = navigator.clipboard.readText();
 	userData.browserStorage = getBrowserStorage();
 
 	// Operating system details
@@ -62,15 +61,8 @@ export default function collectUserData() {
 	userData.screenOrientation = window.screen.orientation.type || '';
 
 	// Browser console logs
-	if (typeof console !== 'undefined') {
-		var consoleLogs = [];
-		console.oldLog = console.log;
-		console.log = function (message) {
-			consoleLogs.push(message);
-			console.oldLog.apply(console, arguments);
-		};
-		userData.consoleLogs = consoleLogs;
-	}
+	// To be added when error boundary component is created
+
 
 	// Referrer URL
 	userData.referrerUrl = document.referrer;
@@ -98,6 +90,27 @@ export default function collectUserData() {
 	}
 
 	return userData;
+
+	function newFunction() {
+		if (typeof console !== 'undefined') {
+			var consoleLogs = [];
+			var originalConsoleMethods = {
+				log: console.log,
+				info: console.info,
+				warn: console.warn,
+				error: console.error
+			};
+
+			['log', 'info', 'warn', 'error'].forEach(function (method) {
+				console[method] = function () {
+					consoleLogs.push(Array.from(arguments));
+					originalConsoleMethods[method].apply(console, arguments);
+				};
+			});
+
+			userData.consoleLogs = consoleLogs;
+		}
+	}
 }
 
 // Helper function to determine the device type
@@ -148,7 +161,7 @@ function getBrowserStorage() {
 	cookies.forEach(function (cookie) {
 		var parts = cookie.split('=');
 		var name = parts[0].trim();
-		var value = decodeURIComponent(parts[1].trim());
+		var value = parts.length > 1 ? decodeURIComponent(parts[1].trim()) : '';
 		cookiesData[name] = value;
 	});
 
